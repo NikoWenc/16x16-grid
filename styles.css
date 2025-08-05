@@ -1,0 +1,19 @@
+body {
+    background-color: gray;
+}
+
+#main-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.main-child {
+    background-color: aqua;
+    border: 1px solid black;
+    
+    width: 200px;
+    height: 200px;
+}
