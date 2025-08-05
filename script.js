@@ -5,7 +5,7 @@ function appendDivsTo(container){
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class", "main-child");
         container.appendChild(newDiv);
+        newDiv.addEventListener("mouseenter", () => newDiv.style.backgroundColor = "cyan");
     }
 }
 appendDivsTo(mainContainer);
-
