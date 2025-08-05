@@ -27,3 +27,7 @@ body {
     height: 50px;
     flex-basis: calc(100% / 16);
 }
+
+.main-child:hover {
+    background-color: cyan;
+}
