@@ -1,9 +1,7 @@
 // do you guys really read these codes?
-
 const mainContainer = document.querySelector("#main-container");
 const button = document.querySelector("#box-count");
 let boxCount = -1;
-let opacity = 100;
 
 let isMouseDown = false;
 document.addEventListener("mousedown", () => isMouseDown = true);
@@ -31,38 +29,39 @@ button.addEventListener("click", (event) => {
                                         overflow: auto;`);
 
     for (let i = 1; i <= containerCount; i++){
-    const newDiv = document.createElement("div");
-    newDiv.setAttribute("style", `border: 1px solid white; 
-                                    height: 50px; 
-                                    flex-basis: calc(100% / ${boxCount});`);
-    newDiv.setAttribute("class", "custom-child")
+        let opacity = 100;
+        const newDiv = document.createElement("div");
+        newDiv.setAttribute("style", `border: 1px solid white; 
+                                        height: 50px; 
+                                        flex-basis: calc(100% / ${boxCount});`);
+        newDiv.setAttribute("class", "custom-child")
+        newDiv.style.opacity = `${opacity}%`;
 
-    // randomized the color of boxes when selected
-    newDiv.addEventListener("mouseenter", () => {
-        if (isMouseDown) newDiv.style.backgroundColor = 
-        `rgb(${Math.random() * 255 + 1}, ${Math.random() * 255 + 1}, ${Math.random() * 255 + 1})`});
+        // randomized the color of boxes when selected
+        newDiv.addEventListener("mouseenter", () => {
+            if (isMouseDown) newDiv.style.backgroundColor = 
+                `rgb(${Math.random() * 255 + 1}, ${Math.random() * 255 + 1}, ${Math.random() * 255 + 1})`;
 
-    newDiv.addEventListener("mouseenter", () => {
-        if (isMouseDown) newDiv.style.opacity = `${opacity -= 10}%`;
-    });
+            if (isMouseDown) newDiv.style.opacity = `${opacity -= 10}%`;
+        });
 
-    newDiv.addEventListener("click", () => newDiv.style.backgroundColor = "");
-    mainContainer.appendChild(newDiv);
+        newDiv.addEventListener("click", () => newDiv.style.backgroundColor = "");
+        mainContainer.appendChild(newDiv);
     }
 });
 
 function appendDivsTo(container){
     for (let i = 1; i <= 256; i++){
+        let opacity = 100;
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class", "main-child");
+        newDiv.style.opacity = `${opacity}%`;
 
         // randomized the color of boxes when selected
         newDiv.addEventListener("mouseenter", () => {
             if (isMouseDown) newDiv.style.backgroundColor = 
-            `rgb(${Math.random() * 255 + 1}, ${Math.random() * 255 + 1}, ${Math.random() * 255 + 1})`
-        });
-        
-        newDiv.addEventListener("mouseenter", () => {
+                `rgb(${Math.random() * 255 + 1}, ${Math.random() * 255 + 1}, ${Math.random() * 255 + 1})`;
+
             if (isMouseDown) newDiv.style.opacity = `${opacity -= 10}%`;
         });
 
