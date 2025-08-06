@@ -29,6 +29,8 @@ button.addEventListener("click", (event) => {
                                         justify-content: center; 
                                         overflow: auto;`);
 
+    let opacity = 100;
+
     for (let i = 1; i <= containerCount; i++){
     const newDiv = document.createElement("div");
     newDiv.setAttribute("style", `border: 1px solid white; 
@@ -40,6 +42,10 @@ button.addEventListener("click", (event) => {
     newDiv.addEventListener("mouseenter", () => {
         if (isMouseDown) newDiv.style.backgroundColor = 
         `rgb(${Math.random() * 255 + 1}, ${Math.random() * 255 + 1}, ${Math.random() * 255 + 1})`});
+
+    newDiv.addEventListener("mouseenter", () => {
+        if (isMouseDown) newDiv.style.opacity = `${opacity -= 10}%`;
+    });
 
     newDiv.addEventListener("click", () => newDiv.style.backgroundColor = "");
     mainContainer.appendChild(newDiv);
