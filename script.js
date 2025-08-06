@@ -3,6 +3,7 @@
 const mainContainer = document.querySelector("#main-container");
 const button = document.querySelector("#box-count");
 let boxCount = -1;
+let opacity = 100;
 
 let isMouseDown = false;
 document.addEventListener("mousedown", () => isMouseDown = true);
@@ -28,8 +29,6 @@ button.addEventListener("click", (event) => {
                                         align-item: center;
                                         justify-content: center; 
                                         overflow: auto;`);
-
-    let opacity = 100;
 
     for (let i = 1; i <= containerCount; i++){
     const newDiv = document.createElement("div");
@@ -60,7 +59,12 @@ function appendDivsTo(container){
         // randomized the color of boxes when selected
         newDiv.addEventListener("mouseenter", () => {
             if (isMouseDown) newDiv.style.backgroundColor = 
-            `rgb(${Math.random() * 255 + 1}, ${Math.random() * 255 + 1}, ${Math.random() * 255 + 1})`});
+            `rgb(${Math.random() * 255 + 1}, ${Math.random() * 255 + 1}, ${Math.random() * 255 + 1})`
+        });
+        
+        newDiv.addEventListener("mouseenter", () => {
+            if (isMouseDown) newDiv.style.opacity = `${opacity -= 10}%`;
+        });
 
         newDiv.addEventListener("click", () => newDiv.style.backgroundColor = "");
         container.appendChild(newDiv);
