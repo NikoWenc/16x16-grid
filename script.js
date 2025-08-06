@@ -20,8 +20,8 @@ button.addEventListener("click", (event) => {
     mainContainer.classList.remove("main-container-style");
     mainContainer.replaceChildren();
 
-    mainContainer.setAttribute("style", `width: ${boxCount * 50}px; 
-                                        height: ${boxCount * 50}px; 
+    mainContainer.setAttribute("style", `width: 800px; 
+                                        height: 800px; 
                                         display: flex; 
                                         flex-flow: row wrap; 
                                         align-item: center;
@@ -31,8 +31,8 @@ button.addEventListener("click", (event) => {
     for (let i = 1; i <= containerCount; i++){
         let opacity = 100;
         const newDiv = document.createElement("div");
-        newDiv.setAttribute("style", `border: 1px solid white; 
-                                        height: 50px; 
+        newDiv.setAttribute("style", `border: 1px solid black; 
+                                        
                                         flex-basis: calc(100% / ${boxCount});`);
         newDiv.setAttribute("class", "custom-child")
         newDiv.style.opacity = `${opacity}%`;
