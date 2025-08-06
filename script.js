@@ -1,15 +1,22 @@
+// do you guys really read these codes?
+
 const mainContainer = document.querySelector("#main-container");
 const button = document.querySelector("#box-count");
-let boxCount;
+let boxCount = -1;
 
 let isMouseDown = false;
-
 document.addEventListener("mousedown", () => isMouseDown = true);
 document.addEventListener("mouseup", () => isMouseDown = false);
 
 button.addEventListener("click", (event) => {
     event.target.blur();
-    boxCount = prompt("Enter Box Count: ");
+    boxCount = prompt("Enter Box Count 1-100 only: ");
+
+    // limit the input box counter
+    while(boxCount > 100 || boxCount < 0) {
+        boxCount = prompt("Enter Box Count 1-100 only: ");
+    }
+
     let containerCount = boxCount * boxCount;
     mainContainer.classList.remove("main-container-style");
     mainContainer.replaceChildren();
@@ -30,13 +37,12 @@ button.addEventListener("click", (event) => {
     newDiv.setAttribute("class", "custom-child")
 
     // randomized the color of boxes when selected
-    newDiv.addEventListener("mouseenter", () => {if (isMouseDown) 
-        newDiv.style.backgroundColor = 
+    newDiv.addEventListener("mouseenter", () => {
+        if (isMouseDown) newDiv.style.backgroundColor = 
         `rgb(${Math.random() * 255 + 1}, ${Math.random() * 255 + 1}, ${Math.random() * 255 + 1})`});
 
     newDiv.addEventListener("click", () => newDiv.style.backgroundColor = "");
     mainContainer.appendChild(newDiv);
-    // newDiv.setAttribute("class", "main-child:hover");
     }
 });
 
@@ -46,13 +52,12 @@ function appendDivsTo(container){
         newDiv.setAttribute("class", "main-child");
 
         // randomized the color of boxes when selected
-        newDiv.addEventListener("mouseenter", () => {if (isMouseDown) 
-            newDiv.style.backgroundColor = 
+        newDiv.addEventListener("mouseenter", () => {
+            if (isMouseDown) newDiv.style.backgroundColor = 
             `rgb(${Math.random() * 255 + 1}, ${Math.random() * 255 + 1}, ${Math.random() * 255 + 1})`});
 
         newDiv.addEventListener("click", () => newDiv.style.backgroundColor = "");
         container.appendChild(newDiv);
-        // newDiv.setAttribute("class", "main-child:hover");
     }
 };
 appendDivsTo(mainContainer);
