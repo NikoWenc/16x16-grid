@@ -28,7 +28,8 @@ button.addEventListener("click", (event) => {
                                     height: 50px; 
                                     flex-basis: calc(100% / ${boxCount});`);
     newDiv.setAttribute("class", "custom-child")
-    newDiv.addEventListener("mouseenter", () => {if (isMouseDown) newDiv.style.backgroundColor = "cyan"})
+    newDiv.addEventListener("mouseenter", () => {if (isMouseDown) newDiv.style.backgroundColor = "cyan"});
+    newDiv.addEventListener("click", () => newDiv.style.backgroundColor = "");
     mainContainer.appendChild(newDiv);
     // newDiv.setAttribute("class", "main-child:hover");
     }
@@ -39,6 +40,7 @@ function appendDivsTo(container){
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class", "main-child");
         newDiv.addEventListener("mouseenter", () => {if (isMouseDown) newDiv.style.backgroundColor = "cyan"});
+        newDiv.addEventListener("click", () => newDiv.style.backgroundColor = "");
         container.appendChild(newDiv);
         // newDiv.setAttribute("class", "main-child:hover");
     }
