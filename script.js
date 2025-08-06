@@ -24,11 +24,16 @@ button.addEventListener("click", (event) => {
 
     for (let i = 1; i <= containerCount; i++){
     const newDiv = document.createElement("div");
-    newDiv.setAttribute("style", `border: 1px solid black; 
+    newDiv.setAttribute("style", `border: 1px solid white; 
                                     height: 50px; 
                                     flex-basis: calc(100% / ${boxCount});`);
     newDiv.setAttribute("class", "custom-child")
-    newDiv.addEventListener("mouseenter", () => {if (isMouseDown) newDiv.style.backgroundColor = "cyan"});
+
+    // randomized the color of boxes when selected
+    newDiv.addEventListener("mouseenter", () => {if (isMouseDown) 
+        newDiv.style.backgroundColor = 
+        `rgb(${Math.random() * 255 + 1}, ${Math.random() * 255 + 1}, ${Math.random() * 255 + 1})`});
+
     newDiv.addEventListener("click", () => newDiv.style.backgroundColor = "");
     mainContainer.appendChild(newDiv);
     // newDiv.setAttribute("class", "main-child:hover");
@@ -39,7 +44,12 @@ function appendDivsTo(container){
     for (let i = 1; i <= 256; i++){
         const newDiv = document.createElement("div");
         newDiv.setAttribute("class", "main-child");
-        newDiv.addEventListener("mouseenter", () => {if (isMouseDown) newDiv.style.backgroundColor = "cyan"});
+
+        // randomized the color of boxes when selected
+        newDiv.addEventListener("mouseenter", () => {if (isMouseDown) 
+            newDiv.style.backgroundColor = 
+            `rgb(${Math.random() * 255 + 1}, ${Math.random() * 255 + 1}, ${Math.random() * 255 + 1})`});
+
         newDiv.addEventListener("click", () => newDiv.style.backgroundColor = "");
         container.appendChild(newDiv);
         // newDiv.setAttribute("class", "main-child:hover");
